@@ -1,0 +1,8 @@
+[Unit]
+Description=Service count time spent in internet
+Wants=network-online.target
+After=network.target network-online.target
+[Service]
+ExecStart=/bin/sh -c '/usr/bin/dbus-monitor --system "sender=org.freedesktop.NetworkManager, path=/org/freedesktop/NetworkManager, member=StateChanged" | /usr/bin/python /var/internet_usage/parser.py'
+[Install]
+WantedBy=multi-user.target

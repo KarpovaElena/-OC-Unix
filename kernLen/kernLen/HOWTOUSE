@@ -1,0 +1,30 @@
+1. + Compile all:
+make all
++ clean all:
+make clean
+
+2. ++ to check kernel logs in console
+tail -f /var/log/kern.log
+3. ++ installing module to kernel
+sudo insmod mymodule.ko
+--- in kernel log u should see Hello !!! (its task 1)
+4. ++ remove module from kernel
+sudo rmmod mymodule
+--- in kernel log u should see Bye !!! (its task 1)
+--- now about task 2 and 3
+5. do 3rd step.
+6. --- u ll see in log I was assigned major number <n>. where n is number. Now we should create device in /dev
+sudo mknod /dev/mydevice c <n> 0
+++ lets look at /dev
+ll -al /dev | grep "mydevice"
+++ if there re sudo perm just make
+sudo chmod 666 /dev/mydevice
+--- now user can interact with device
+7.(u can do it such many times as u wanna :) ) ++ now lets put message in devce buffer
+echo "your message here" > /dev/mydevice
++++ in console u should see message such as  Writing msg in buffer.
+8. +++ we already compile ioctlt.c in test when execute make all sooo...
+./test
++++ entering our chardev name for us it is /dev/mydevice then press enter
++++ now u get message how many msg in buff u have
++++ tap number and see msg

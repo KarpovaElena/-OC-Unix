@@ -1,0 +1,14 @@
+For ifconfig:
+sudo apt install net-tools
+1.Compile all:
+make all
+Clean all:
+make clean
+2. Check kernel logs in console
+tail -f /var/log/kern.log
+3. Installing module to kernel
+sudo insmod ndriver.ko
+4. See how sys send packeges to our driver
+5. Check ifconfig (u ll see how pgs grows)
+6.Delete moduse
+sudo rmmod ndriver
